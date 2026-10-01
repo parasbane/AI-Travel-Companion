@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F7F9FC;
+  --foreground: #18181b;
 }
 
 @theme inline {
@@ -14,13 +14,77 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #09090b;
+    --foreground: #f4f4f5;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Destination map markers (Leaflet DivIcon) */
+.ai-travel-map-marker {
+  background: transparent;
+  border: none;
+}
+
+.ai-travel-map-marker__pin {
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin: 2px auto 0;
+  border-radius: 9999px;
+  background: #2563eb;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(24, 24, 27, 0.35);
+}
+
+.ai-travel-map-marker__pin--selected {
+  width: 22px;
+  height: 22px;
+  background: #1d4ed8;
+  border-width: 3px;
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.35),
+    0 2px 8px rgba(24, 24, 27, 0.4);
+}
+
+.leaflet-container {
+  font: inherit;
+  background: #e4e4e7;
+}
+
+/* Hide horizontal scrollbars on category tabs etc. while keeping scrolling */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
